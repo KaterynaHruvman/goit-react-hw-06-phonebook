@@ -8,7 +8,7 @@ import * as actions from '../../redux/phoneBook/actions'
 const ContactsListItem = ({ id, name, phone, onRemove }) => {
     return (
     <li className={styles.contactListItem}>
-      {name}: {phone}{' '}
+      {name}: {phone}
       <button onClick={() => onRemove(id)} className={styles.btnDelete}>
         delete
       </button>
@@ -22,7 +22,7 @@ const ContactList = ({ contacts, onRemove }) => {
         {contacts.map(({ name, id, phone }) => (
         <ContactsListItem
           {...{ name, id, phone }}
-          onDeleteContact={onRemove}
+          onRemove={onRemove}
           key={id}
         />
       ))}
@@ -42,7 +42,7 @@ const mapStateToProps = ({ contacts: { items, filter } }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onDeleteContact: id => dispatch(actions.deleteContact(id)),
+    onRemove: id => dispatch(actions.deleteContact(id)),
   };
 };
 
